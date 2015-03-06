@@ -5,7 +5,7 @@ var fs = require('fs');
 var mkdirp = require('mkdirp');
 var ncp = require('ncp');
 
-var downloadDir = path.join(__dirname, 'bin');
+var downloadDir = path.join(__dirname, 'lib');
 
 module.exports = function(installDir) {
 	if (!fs.existsSync(installDir)) {
