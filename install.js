@@ -6,13 +6,14 @@ var download = require('download');
 var closureToolsUrls = 'https://github.com/google/closure-library/archive/master.zip';
 var downloadDir = path.join(__dirname, 'lib');
 
-var closureToolsDownload = download(closureToolsUrls, downloadDir, { extract: true , strip: 1});
+var closureToolsDownload = download({ extract: true , strip: 1})
+	.get(closureToolsUrls)
+	.dest(downloadDir);
 
-closureToolsDownload.on('error', function(err){
-	if (err) {
+closureToolsDownload.run(function(err, files){
+	if(err) {
 		throw new Error('Failed to download "' + closureToolsUrls + '"!\n' + err);
 	}
-});
-closureToolsDownload.on('close', function(){
+	
 	console.log('Successfully downloaded "' + closureToolsUrls + '" to:\n    ' + downloadDir);
 });
