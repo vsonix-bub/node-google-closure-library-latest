@@ -9,7 +9,7 @@ var downloadDir = path.join(__dirname, 'lib');
 
 module.exports = function(installDir) {
 	if (!fs.existsSync(installDir)) {
-		mkdirp(installDir);
+		mkdirp.sync(installDir);
 	}
 	
 	if (fs.existsSync(installDir) && fs.statSync(installDir).isDirectory()) {
